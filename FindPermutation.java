@@ -7,13 +7,12 @@ public class FindPermutation{
             return;
         }
 
+
         // recursion
         for(int i=0;i<str.length();i++){
-            char curr = str.charAt(i);
-            // "abcde"=> "ab"+"de"="abde"
-           String NewStr= str.substring(0,i)+str.substring(i+1);
-            findPermutation(NewStr,ans+curr);
-
+            char curr= str.charAt(i);
+            String nextStr= str.substring(0,i)+str.substring(i+1);
+            findPermutation(nextStr,ans+curr);
         }
     }
 
