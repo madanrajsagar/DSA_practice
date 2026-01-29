@@ -1,4 +1,4 @@
-public class NQueens{
+public class NQueensOnesol{
 
     public static boolean isSafe(char[][] board,int row,int col){
             // vertical up
@@ -24,23 +24,25 @@ public class NQueens{
     }
 
 
-    public static void nQueens(char[][] board,int row){
+    public static boolean nQueens(char[][] board,int row){
 
     // Base   
     if(board.length==row){
-        printBoard(board);
-        count++;
-        return;
+        // printBoard(board);
+        return true;
     }
     // recursion
         for(int i=0;i<board.length;i++){
               if(isSafe(board,row,i)) {
                 board[row][i]='Q';
-                nQueens(board,row+1);//fun call
+                if(nQueens(board,row+1)){
+                    return true;
+                }//fun call
                 board[row][i]='x';
               } 
             
         }
+        return false;
     }
 
 
@@ -58,7 +60,6 @@ public class NQueens{
 
    }
 
-   public static int count=0;
 
     public static void main(String args[]){
         int n= 4;
@@ -72,7 +73,12 @@ public class NQueens{
             }
         }
 
-        nQueens(board,0);
-        System.out.println(count);
+     if(nQueens(board,0)){
+        System.out.println("Yes solution is exists!");
+        printBoard(board);
+    
+     }else{
+        System.out.println("No solution doesn't exists!");    
+     }
     }
 }
