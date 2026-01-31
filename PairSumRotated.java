@@ -13,20 +13,14 @@ public class PairSumRotated {
         }
         int lp = br + 1;
         int rp = br;
+        int n= nums.size();
         while (lp != rp) {
-            if (nums.get(lp) + nums.get(rp) == target) {
+            if(nums.get(lp)+nums.get(rp)==target){//case 1
                 return true;
-            } else if (nums.get(lp) + nums.get(rp) > target) {
-                rp--;
-                if (rp < 0) {
-                    rp = nums.size() - 1;
-                }
-
-            } else {
-                lp++;
-                if(lp==nums.size()){
-                    lp=0;
-                }
+            }else if(nums.get(lp)+nums.get(rp)<target){//case 2
+                lp=(lp+1)%n;
+            }else{ //case 3
+                rp=(n+rp-1)%n;
             }
         }
         return false;
@@ -41,10 +35,12 @@ public class PairSumRotated {
         nums.add(6);
         nums.add(8);
         nums.add(9);
-        nums.add(9);
+        nums.add(10);
 
-        int target = 21;
+        int target = 16;
         System.out.println(pairSum2(nums, target));
+        
+        
 
     }
 }
