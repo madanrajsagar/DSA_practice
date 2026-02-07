@@ -54,11 +54,11 @@ public class SwappingLL{
 
 }
     public static void main(String args[]){
-     head=new Node(10);
-    Node first= new Node(20);
-    Node second= new Node(30);
-    Node third= new Node(40);
-    Node fourth= new Node(50);
+     head=new Node(1);
+    Node first= new Node(2);
+    Node second= new Node(3);
+    Node third= new Node(4);
+    Node fourth= new Node(5);
     head.next=first;
     first.next=second;
     second.next=third;
