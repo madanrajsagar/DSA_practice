@@ -30,6 +30,10 @@ public class ActivitySelectionProblem{
         }
 
 System.out.println("Number of activities can be performed : "+maxact);
+
+    for(int i=0;i<activities.size();i++){
+        System.out.println("A"+activities.get(i));
+    }
         
 
     }
