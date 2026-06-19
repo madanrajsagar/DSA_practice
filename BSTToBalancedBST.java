@@ -1,6 +1,7 @@
-import java.rmi.server.RemoteObjectInvocationHandler;
 
-public class BST_Mirror{
+import java.util.ArrayList;
+import java.util.List;
+public class BSTToBalancedBST{
     public static class Node{
         int data;
         Node left;
@@ -26,22 +27,7 @@ public class BST_Mirror{
         return root;
     }
 
-    public static Node mirrorBST(Node root){
-        if(root==null){
-            return null;
-        }
-
-        Node left=mirrorBST(root.left);
-        Node right=mirrorBST(root.right);
-
-        root.left=right;
-        root.right=left;
-
-        return root;
-
-    }
-
-   public static void inorder(Node root){
+    public static void inorder(Node root){
         if(root==null){
             return;
         }
@@ -50,20 +36,32 @@ public class BST_Mirror{
         inorder(root.right);
     }
 
-    public static Node sortedArraytoBalancedBST(int []arr,int st,int end){
+    public static void BSTtoArr(Node root,List<Integer> in){
+        if(root==null){
+            return;
+        }
+        BSTtoArr(root.left,in);
+        in.add(root.data);
+        BSTtoArr(root.right, in);
 
-        if(st>end){
+    }
+    public static Node ALtoBalBST(List<Integer> in,int st,int ed){
+        if(st>ed){
             return null;
         }
-
-        int mid=(st+end)/2;
-        Node root=new Node(arr[mid]);
-        Node left=sortedArraytoBalancedBST(arr,st,mid-1);
-        Node right=sortedArraytoBalancedBST(arr,mid+1,end);
-        root.left=left;
+        int mid=(st+ed)/2;
+        Node root= new Node(in.get(mid));
+        Node left=ALtoBalBST(in,st,mid-1);
+        Node right=ALtoBalBST(in,mid+1,ed);
         root.right=right;
+        root.left=left;
+    return root;
+    }
+    public static Node BST_to_BalBST(Node root){
+        List<Integer> in = new ArrayList<>();
+        BSTtoArr(root,in);
+        return ALtoBalBST(in,0,in.size()-1);
 
-        return root;
     }
 
     public static void main(String[] args) {
@@ -73,10 +71,7 @@ public class BST_Mirror{
         for(int i=0;i<values.length;i++){
             root=insert(root, values[i]);
         }
-      
-        int arr[]={3,5,6,8,10,11,12};
 
-        Node root1=sortedArraytoBalancedBST(arr,0,6);
-        inorder(root1);        
+           inorder(BST_to_BalBST(root));
     }
 }
