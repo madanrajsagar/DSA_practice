@@ -54,7 +54,7 @@ public class BST_tree{
         if(root==null){
             return 0;
             }
-        if(low<=root.data &&root.data<=high){
+        if(low<=root.data && root.data<=high){
             rangeSumBST(root.left,low,high);
             sum+=root.data;
             rangeSumBST(root.right,low,high);
@@ -90,7 +90,7 @@ public class BST_tree{
     }
 
     public static void main(String[] args) {
-        int values[]={5,1,3,4,2,7};
+        int values[]= {5,1,3,4,2,7};
         Node root=null;
 
         for(int i=0;i<values.length;i++){

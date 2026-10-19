@@ -6,7 +6,7 @@ public class PairSumRotated {
     public static boolean pairSum2(ArrayList<Integer> nums, int target) {
         int br = 0;
         for (int i = 0; i < nums.size() - 1; i++) {
-            if (nums.get(i) > nums.get(i + 1)) {
+            if (nums.get(i) >nums.get(i + 1)) {
                 br = i;
                 break;
             }
