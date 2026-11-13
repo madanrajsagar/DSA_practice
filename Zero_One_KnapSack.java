@@ -1,5 +1,5 @@
 public class Zero_One_KnapSack{
-    public static int _0_1_knapsackR(int n,int []wt,int val[],int w){
+   public static int _0_1_knapsackR(int n,int []wt,int val[],int w){
         if(n==0||w==0){
             return 0;
         }
@@ -16,7 +16,6 @@ public class Zero_One_KnapSack{
             return _0_1_knapsackR(n-1, wt, val, w);
         }
     }
-
     public static int _0_1_knapsackWithMemo(int n,int []wt,int val[],int w,int [][]dp){
             if(n==0||w==0){
             return 0;

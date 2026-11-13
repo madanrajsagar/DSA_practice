@@ -16,8 +16,13 @@ public class UnboundKnapSack{
             }else{
                 dp[i][j]=dp[i-1][j];
             }
+         System.out.print(dp[i][j]+" ");
+
         }
+       System.out.println();
+
        }
+
        return dp[n][W];
     }
 
